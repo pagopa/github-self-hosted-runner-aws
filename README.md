@@ -1,1 +1,1 @@
-# github-self-hosted-runner-azure
+# github-self-hosted-runner-aws
