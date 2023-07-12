@@ -4,7 +4,6 @@ FROM ubuntu:22.04@sha256:965fbcae990b0467ed5657caceaec165018ef44a4d2d46c7cdea80a
 ENV ENV_GITHUB_RUNNER_VERSION="2.305.0"
 ENV ENV_GITHUB_RUNNER_VERSION_SHA=737bdcef6287a11672d6a5a752d70a7c96b4934de512b7eb283be6f51a563f2f
 ENV ENV_YQ_VERSION="v4.30.6"
-ENV ENV_KUBELOGIN_VERSION=0.0.27
 
 WORKDIR /
 
@@ -18,9 +17,8 @@ RUN chmod +x /github-runner-entrypoint.sh
 USER github
 
 RUN whoami && \
-  az --version && \
+  aws --version && \
   kubectl --help && \
-  kubelogin --version && \
   helm --help && \
   yq --version
 
