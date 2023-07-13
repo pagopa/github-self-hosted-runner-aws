@@ -92,7 +92,7 @@ echo "✅ Configure kubernetes & Helm for installation"
 
 apt-get satisfy -y "kubectl"
 ## Test kubectl
-kubectl version --short || exit
+kubectl version --client --output json || exit
 echo "✅ Installed kubernetes"
 
 apt-get satisfy "helm" -y
