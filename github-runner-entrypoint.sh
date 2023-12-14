@@ -44,10 +44,12 @@ printf "Replace Existing Runners: %s\n" "$REPLACEMENT_POLICY_LABEL"
 
 # actions-runner is a folder inside the github runner zip
 if [ "$INTERACTIVE" == "FALSE" ]; then
-	echo -ne "$REPLACEMENT_POLICY" | ./actions-runner/config.sh --url "$GITHUB_REPOSITORY" --token "$GITHUB_TOKEN" --name "$RUNNER_NAME" --work "$WORK_DIR" --labels "$LABELS" --disableupdate
+	echo -ne "$REPLACEMENT_POLICY" | ./actions-runner/config.sh --url "$GITHUB_REPOSITORY" --token "$GITHUB_TOKEN" --name "$RUNNER_NAME" --work "$WORK_DIR" --labels "$LABELS" --disableupdate --unattended --ephemeral
 else
-	./actions-runner/config.sh --url "$GITHUB_REPOSITORY" --token "$GITHUB_TOKEN" --name "$RUNNER_NAME" --work "$WORK_DIR" --labels "$LABELS" --disableupdate
+	./actions-runner/config.sh --url "$GITHUB_REPOSITORY" --token "$GITHUB_TOKEN" --name "$RUNNER_NAME" --work "$WORK_DIR" --labels "$LABELS" --disableupdate --unattended --ephemeral
 fi
+
+export GITHUB_TOKEN=_REDACTED_
 
 # Start the runner.
 printf "Executing GitHub Runner for %s\n" "$GITHUB_REPOSITORY"
